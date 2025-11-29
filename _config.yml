@@ -26,7 +26,7 @@ author:
   avatar           : "profile3.png"
   name             : "SN Yang"
   pronouns         : # example: "he/him"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : # "Short biography for the left-hand sidebar"
   location         : "Beijing"
   employer         : "CZ University"
   uri              : # URL
