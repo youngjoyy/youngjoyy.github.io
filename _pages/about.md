@@ -1,15 +1,33 @@
 ---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "Home"
+excerpt: "ABOUT ME"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the repository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. Incidentally, these same features make it a great template for anyone that needs to show off a professional template!
+---
 
- You can fork [this template](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and Markdown files, add your own PDFs and other content, and have your own site for free, with no ads!
+Hello everyone! I graduated from the School of Environmental Science and Engineering in Changzhou University, and majored in Environmental Engineering. I am currently serving as a normal research engineer in an university, mainly working some scientific research and programs. During my studies and work experience, i primarily involved in Multidisciplinary and Interdisciplinary, such as Micro-nano fabrication, Materials Science, Physical Electronics, Electronic component, and Computer Science. Following scientific research and engineering technology actually supplemented knowledges and enlightened my ideas through sedulous devoting. But I also realized that i had tiny progress and did not harvest plenty of achievements what i want to gain. Spending much time and effort is worthwhile desoite there are full of obstacles and not-so-good background. Just going ahead.
+
+My research interests span Multidisciplinary and Interdisciplinary, with particular focus on micro-nano fabrication, micro-nano materials, rigid or flexiable electronic component, and artifical intelligence.
+
+I'm always open to discussing research ideas, collaboration opportunities, or just having interesting conversations about Multidisciplinary and Interdisciplinary. Feel free to reach out through any of the channels below:
+Primary Contact: [E-mail](840292813@qq.com)
+Academic Profiles: [Google Scholar](youngjoyy.github.io)
+Code & Projects: [GitHub](youngjoyy.github.io)
+Full Details: [Download CV](youngjoyy.github.io)
+
+This homepage serves as my academic hub – a place to share research updates, project progress, and occasional thoughts on Interdisciplinary developments.
+
+
+[//]: <> (This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the repository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. Incidentally, these same features make it a great template for anyone that needs to show off a professional template!)
+
+[//]: <> (You can fork [this template](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and Markdown files, add your own PDFs and other content, and have your own site for free, with no ads!)
+
+---
 
 A data-driven personal website
 ======
