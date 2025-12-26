@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "SN-Yang Homepage"
-description              : "this yang's personal homepage" # describing same information about oneself
+description              : # "this yang's personal homepage" # describing same information about oneself
 repository               : "youngjoyy/youngjoyy.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -23,11 +23,11 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 # Site Author
 author:
   name             : "SN-Yang"
-  avatar           : Yang     # "images/android-chrome-512x512.png"
+  avatar           :  "images/android-chrome-512x512.png"
   bio              : "Researcher/Engineer"
   location         : "Beijing,China"
-  description      : 主页的描述
-  employer         :
+  description      : 
+  employer         : Others
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=YOUR_GOOGLE_SCHOLAR_ID"
   email            : "840292813@qq.com"
