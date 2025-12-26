@@ -6,7 +6,7 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-title                    : "SN-Yang"
+title                    : "SN-Yang Homepage"
 description              : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. "
 repository               : "youngjoyy/youngjoyy.github.io"
 google_scholar_stats_use_cdn : true
@@ -19,12 +19,14 @@ google_site_verification :  # get google_site_verification from https://search.g
 bing_site_verification   :  # get bing_site_verification from https://www.bing.com/webmasters/about
 baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.baidu.com/login/index?u=/site/index
 
+
 # Site Author
 author:
   name             : "SN-Yang"
-  avatar           : "images/android-chrome-512x512.png"
-  bio              : "Researcher"
+  avatar           : Yang     # "images/android-chrome-512x512.png"
+  bio              : "Researcher/Engineer"
   location         : "Beijing,China"
+  description      : # 主页的描述
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=YOUR_GOOGLE_SCHOLAR_ID"
@@ -37,7 +39,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : # e.g., "youngjoyy.github"
+  github           : "https://github.com/youngjoyy/"
   google_plus      :
   keybase          :
   instagram        :
