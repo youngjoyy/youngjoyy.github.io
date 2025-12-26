@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "SN-Yang Homepage"
-description              : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. "
+description              : "this yang's personal homepage" # describing same information about oneself
 repository               : "youngjoyy/youngjoyy.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -26,7 +26,7 @@ author:
   avatar           : Yang     # "images/android-chrome-512x512.png"
   bio              : "Researcher/Engineer"
   location         : "Beijing,China"
-  description      : # 主页的描述
+  description      : 主页的描述
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=YOUR_GOOGLE_SCHOLAR_ID"
