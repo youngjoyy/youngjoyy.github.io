@@ -1,14 +1,84 @@
-<aside class="sidebar">
-  <div class="profile-card">
-    <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="Avatar" class="avatar">
-    <h3>Your Name</h3>
-    <p class="position">Ph.D. Student</p>
-    <p class="affiliation">University Name</p>
-    <hr>
-    <div class="social-links">
-      <a href="mailto:{{ site.email }}"><i class="fas fa-envelope"></i></a>
-      <a href="https://github.com/{{ site.social.github }}"><i class="fab fa-github"></i></a>
-      <a href="{{ site.social.google_scholar }}"><i class="fas fa-graduation-cap"></i></a>
+<!--
+左侧边栏 - 显示个人信息、头像、社交链接
+-->
+<div class="sidebar-content">
+    <!-- 头像和个人信息 -->
+    <div class="profile-section">
+        <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" 
+             alt="{{ site.name }}" 
+             class="profile-avatar">
+        
+        <h1 class="profile-name">{{ site.name }}</h1>
+        <p class="profile-title">{{ site.about.position }}</p>
+        <p class="profile-affiliation">
+            {{ site.about.department }}<br>
+            {{ site.about.university }}
+        </p>
     </div>
-  </div>
-</aside>
+    
+    <!-- 联系信息 -->
+    <div class="contact-section">
+        <h3><i class="fas fa-envelope"></i> Contact</h3>
+        <p class="contact-email">
+            <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+        </p>
+        <p class="contact-location">
+            <i class="fas fa-map-marker-alt"></i> {{ site.about.location }}
+        </p>
+    </div>
+    
+    <!-- 社交链接 -->
+    <div class="social-section">
+        <h3><i class="fas fa-share-alt"></i> Connect</h3>
+        <div class="social-links">
+            {% if site.social_links.github %}
+            <a href="{{ site.social_links.github }}" class="social-link">
+                <i class="fab fa-github"></i>
+            </a>
+            {% endif %}
+            
+            {% if site.social_links.linkedin %}
+            <a href="{{ site.social_links.linkedin }}" class="social-link">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            {% endif %}
+            
+            {% if site.social_links.google_scholar %}
+            <a href="{{ site.social_links.google_scholar }}" class="social-link">
+                <i class="fas fa-graduation-cap"></i>
+            </a>
+            {% endif %}
+            
+            {% if site.social_links.twitter %}
+            <a href="{{ site.social_links.twitter }}" class="social-link">
+                <i class="fab fa-twitter"></i>
+            </a>
+            {% endif %}
+            
+            {% if site.social_links.orcid %}
+            <a href="https://orcid.org/{{ site.social_links.orcid }}" class="social-link">
+                <i class="fab fa-orcid"></i>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- 研究兴趣 -->
+    <div class="interests-section">
+        <h3><i class="fas fa-flask"></i> Research Interests</h3>
+        <ul class="interests-list">
+            {% for interest in site.about.research_interests %}
+            <li>{{ interest }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <!-- 下载简历 -->
+    <div class="resume-section">
+        <a href="{{ '/assets/files/cv.pdf' | relative_url }}" 
+           class="btn-download" 
+           target="_blank">
+            <i class="fas fa-download"></i> Download CV
+        </a>
+    </div>
+</div>
