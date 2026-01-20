@@ -1,0 +1,27 @@
+---
+layout: default  # 继承根布局
+---
+
+<!-- 首页双栏布局 -->
+<div class="main-layout">
+  <!-- 导入侧边栏 -->
+  {% include sidebar.html %}
+
+  <!-- 首页内容区 -->
+  <div class="content">
+    <h1>{{ page.title }}</h1>
+    <!-- 首页正文（Markdown/HTML） -->
+    {{ content }}
+
+    <!-- 最新学术成果（展示前5条） -->
+    <h2>最新学术成果</h2>
+    {% for post in site.posts limit:5 %}
+      {% include publication-card.html item=post %}
+    {% empty %}
+      <p>暂无学术成果展示</p>
+    {% endfor %}
+
+    <!-- 查看全部按钮 -->
+    <a href="{{ site.url }}/publications.html" class="btn">查看全部成果</a>
+  </div>
+</div>
