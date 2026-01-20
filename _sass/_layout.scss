@@ -1,0 +1,381 @@
+// ============================================
+// 页面整体布局
+// ============================================
+
+.page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    
+    @media (max-width: $breakpoint-sm) {
+        flex-direction: column;
+    }
+}
+
+// ============================================
+// 侧边栏样式
+// ============================================
+
+.sidebar {
+    width: 300px;
+    background-color: $primary-color;
+    color: white;
+    padding: $spacing-xl $spacing-lg;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    
+    @media (max-width: $breakpoint-sm) {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: $spacing-md;
+    }
+}
+
+.sidebar-content {
+    .profile-section {
+        text-align: center;
+        margin-bottom: $spacing-xl;
+        
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            margin: 0 auto $spacing-lg;
+        }
+        
+        .profile-name {
+            color: white;
+            margin-bottom: $spacing-xs;
+        }
+        
+        .profile-title {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: $spacing-xs;
+        }
+        
+        .profile-affiliation {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: $font-size-sm;
+        }
+    }
+    
+    .contact-section, .social-section, .interests-section {
+        margin-bottom: $spacing-xl;
+        
+        h3 {
+            color: white;
+            margin-bottom: $spacing-md;
+            font-size: 1.1rem;
+            
+            i {
+                margin-right: $spacing-sm;
+            }
+        }
+        
+        .contact-email, .contact-location {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: $spacing-sm;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: $spacing-md;
+            
+            .social-link {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                color: white;
+                transition: background-color $transition-speed;
+                
+                &:hover {
+                    background-color: $secondary-color;
+                }
+                
+                i {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+        
+        .interests-list {
+            list-style: none;
+            padding-left: 0;
+            
+            li {
+                color: rgba(255, 255, 255, 0.8);
+                margin-bottom: $spacing-sm;
+                padding-left: $spacing-lg;
+                position: relative;
+                
+                &:before {
+                    content: "•";
+                    position: absolute;
+                    left: 0;
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+    
+    .resume-section {
+        .btn-download {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: $secondary-color;
+            color: white;
+            padding: $spacing-md;
+            border-radius: $border-radius;
+            transition: background-color $transition-speed;
+            
+            &:hover {
+                background-color: darken($secondary-color, 10%);
+            }
+            
+            i {
+                margin-right: $spacing-sm;
+            }
+        }
+    }
+}
+
+// ============================================
+// 主要内容区样式
+// ============================================
+
+.main-content {
+    flex: 1;
+    margin-left: 300px;
+    
+    @media (max-width: $breakpoint-sm) {
+        margin-left: 0;
+    }
+}
+
+// ============================================
+// 顶部导航样式
+// ============================================
+
+.top-nav {
+    background-color: white;
+    border-bottom: 1px solid $border-color;
+    padding: $spacing-md $spacing-xl;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    
+    @media (max-width: $breakpoint-sm) {
+        padding: $spacing-md;
+    }
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .nav-brand {
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: $primary-color;
+            
+            i {
+                margin-right: $spacing-sm;
+                font-size: 1.8rem;
+            }
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: $primary-color;
+            
+            @media (max-width: $breakpoint-sm) {
+                display: block;
+            }
+        }
+    }
+    
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: $spacing-xl;
+        
+        @media (max-width: $breakpoint-sm) {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            flex-direction: column;
+            padding: $spacing-md;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            
+            &.active {
+                display: flex;
+            }
+        }
+        
+        .nav-item {
+            .nav-link {
+                color: $text-color;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                
+                i {
+                    margin-right: $spacing-xs;
+                }
+                
+                &.active {
+                    color: $secondary-color;
+                }
+                
+                &:hover {
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+}
+
+// ============================================
+// 内容容器样式
+// ============================================
+
+.content-container {
+    padding: $spacing-xl;
+    
+    @media (max-width: $breakpoint-sm) {
+        padding: $spacing-md;
+    }
+}
+
+// ============================================
+// 页面通用样式
+// ============================================
+
+.page {
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    .page-header {
+        margin-bottom: $spacing-xl;
+        
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: $spacing-sm;
+        }
+        
+        .page-description {
+            color: $text-light;
+            font-size: 1.1rem;
+        }
+    }
+    
+    .page-content {
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// ============================================
+// 面包屑导航样式
+// ============================================
+
+.breadcrumb {
+    margin-bottom: $spacing-xl;
+    
+    ol {
+        display: flex;
+        list-style: none;
+        padding-left: 0;
+        flex-wrap: wrap;
+        
+        li {
+            margin-bottom: 0;
+            
+            &:not(:last-child):after {
+                content: "›";
+                margin: 0 $spacing-sm;
+                color: $text-lighter;
+            }
+            
+            a {
+                color: $text-light;
+                
+                &:hover {
+                    color: $secondary-color;
+                }
+            }
+            
+            &[aria-current="page"] {
+                color: $primary-color;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+// ============================================
+// 页脚样式
+// ============================================
+
+.footer {
+    background-color: $bg-light;
+    padding: $spacing-xl;
+    border-top: 1px solid $border-color;
+    
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        
+        @media (max-width: $breakpoint-sm) {
+            flex-direction: column;
+            gap: $spacing-md;
+            text-align: center;
+        }
+        
+        .footer-copyright {
+            color: $text-light;
+            font-size: $font-size-sm;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: $spacing-md;
+            align-items: center;
+            
+            a {
+                color: $text-light;
+                font-size: $font-size-sm;
+                
+                &:hover {
+                    color: $secondary-color;
+                }
+            }
+            
+            .separator {
+                color: $border-color;
+            }
+        }
+    }
+}
