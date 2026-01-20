@@ -1,10 +1,29 @@
-<header class="site-header">
-  <nav class="nav-bar">
-    <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    <ul class="nav-list">
-      {% for link in site.navigation %}
-        <li><a href="{{ link.url | relative_url }}" class="{% if page.url == link.url %}active{% endif %}">{{ link.title }}</a></li>
-      {% endfor %}
+<!--
+顶部导航栏 - 响应式设计，移动端有汉堡菜单
+-->
+<nav class="navbar">
+    <div class="nav-brand">
+        <a href="{{ '/' | relative_url }}" class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>{{ site.name }}</span>
+        </a>
+        
+        <!-- 移动端汉堡菜单按钮 -->
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    
+    <!-- 导航链接 -->
+    <ul class="nav-links" id="navLinks">
+        {% for item in site.navigation %}
+        <li class="nav-item">
+            <a href="{{ item.url | relative_url }}" 
+               class="nav-link {% if page.url == item.url %}active{% endif %}">
+                <i class="{{ item.icon }}"></i>
+                <span>{{ item.title }}</span>
+            </a>
+        </li>
+        {% endfor %}
     </ul>
-  </nav>
-</header>
+</nav>
