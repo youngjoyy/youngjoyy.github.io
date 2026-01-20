@@ -2,27 +2,20 @@
 默认布局 - 所有页面的基础模板
 包含：头部、侧边栏、主要内容区、页脚
 -->
-
-
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <!-- 元数据 -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: site.title }}</title>
-  
-  <!-- SEO优化（插件自动生成） -->
-  {% seo %}
-
-  <!-- 引入编译后的CSS -->
-  <link rel="stylesheet" href="{{ site.url }}/assets/css/main.css">
-
-  <!-- 引入JS脚本（defer：DOM加载完成后执行） -->
-  <script src="{{ site.url }}/assets/js/main.js" defer></script>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}
+    </title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="page-wrapper">
@@ -49,7 +42,8 @@
             </footer>
         </main>
     </div>
-  <!-- JavaScript -->
-  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+    
+    <!-- JavaScript -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>
