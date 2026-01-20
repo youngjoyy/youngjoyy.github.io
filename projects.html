@@ -1,0 +1,310 @@
+<!--
+项目页面 - 展示研究项目
+-->
+---
+layout: page
+title: "Projects"
+permalink: /projects.html
+description: "My research projects and collaborations"
+---
+
+<div class="projects-container">
+    <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+        <button class="filter-btn" data-filter="collaborative">Collaborative</button>
+    </div>
+
+    <div class="projects-grid">
+        <!-- 项目1 -->
+        <div class="project-card" data-category="active">
+            <div class="project-header">
+                <h3 class="project-title">Machine Learning for Material Discovery</h3>
+                <span class="project-status active">Active</span>
+            </div>
+            <div class="project-description">
+                <p>Developing deep learning models to predict material properties and discover new materials for energy applications.</p>
+            </div>
+            <div class="project-details">
+                <div class="project-detail">
+                    <i class="fas fa-calendar"></i>
+                    <span>2022 - Present</span>
+                </div>
+                <div class="project-detail">
+                    <i class="fas fa-users"></i>
+                    <span>Team: 5 researchers</span>
+                </div>
+                <div class="project-detail">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>NSF Grant #123456</span>
+                </div>
+            </div>
+            <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Materials Project</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="project-link">
+                    <i class="fab fa-github"></i> Code
+                </a>
+                <a href="#" class="project-link">
+                    <i class="fas fa-file-pdf"></i> Paper
+                </a>
+                <a href="#" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> Website
+                </a>
+            </div>
+        </div>
+
+        <!-- 项目2 -->
+        <div class="project-card" data-category="completed">
+            <div class="project-header">
+                <h3 class="project-title">Quantum Computing Simulation</h3>
+                <span class="project-status completed">Completed</span>
+            </div>
+            <div class="project-description">
+                <p>Simulation of quantum algorithms for material science applications using high-performance computing.</p>
+            </div>
+            <div class="project-details">
+                <div class="project-detail">
+                    <i class="fas fa-calendar"></i>
+                    <span>2020 - 2022</span>
+                </div>
+                <div class="project-detail">
+                    <i class="fas fa-users"></i>
+                    <span>Team: 3 researchers</span>
+                </div>
+            </div>
+            <div class="project-tech">
+                <span class="tech-tag">Qiskit</span>
+                <span class="tech-tag">C++</span>
+                <span class="tech-tag">MPI</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="project-link">
+                    <i class="fas fa-file-pdf"></i> Paper
+                </a>
+            </div>
+        </div>
+
+        <!-- 项目3 -->
+        <div class="project-card" data-category="collaborative">
+            <div class="project-header">
+                <h3 class="project-title">International Collaboration on AI Ethics</h3>
+                <span class="project-status active">Active</span>
+            </div>
+            <div class="project-description">
+                <p>International research collaboration focusing on ethical AI development and deployment in scientific research.</p>
+            </div>
+            <div class="project-details">
+                <div class="project-detail">
+                    <i class="fas fa-calendar"></i>
+                    <span>2023 - 2025</span>
+                </div>
+                <div class="project-detail">
+                    <i class="fas fa-users"></i>
+                    <span>Partners: 8 institutions</span>
+                </div>
+                <div class="project-detail">
+                    <i class="fas fa-globe"></i>
+                    <span>International</span>
+                </div>
+            </div>
+            <div class="project-tech">
+                <span class="tech-tag">Ethics</span>
+                <span class="tech-tag">Policy</span>
+                <span class="tech-tag">AI Governance</span>
+            </div>
+        </div>
+
+        <!-- 项目4 -->
+        <div class="project-card" data-category="completed">
+            <div class="project-header">
+                <h3 class="project-title">High-Performance Data Analysis</h3>
+                <span class="project-status completed">Completed</span>
+            </div>
+            <div class="project-description">
+                <p>Development of parallel algorithms for analyzing large-scale scientific datasets from synchrotron facilities.</p>
+            </div>
+            <div class="project-details">
+                <div class="project-detail">
+                    <i class="fas fa-calendar"></i>
+                    <span>2019 - 2021</span>
+                </div>
+                <div class="project-detail">
+                    <i class="fas fa-database"></i>
+                    <span>Data: 10TB+</span>
+                </div>
+            </div>
+            <div class="project-tech">
+                <span class="tech-tag">CUDA</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Spark</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="project-link">
+                    <i class="fab fa-github"></i> Code
+                </a>
+                <a href="#" class="project-link">
+                    <i class="fas fa-database"></i> Dataset
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-filters {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-btn.active {
+    background: #3498db;
+    color: white;
+}
+
+.filter-btn:hover:not(.active) {
+    background: #e0e0e0;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.project-title {
+    margin: 0;
+    font-size: 1.2rem;
+    flex: 1;
+}
+
+.project-status {
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.project-status.active {
+    background: #2ecc71;
+    color: white;
+}
+
+.project-status.completed {
+    background: #95a5a6;
+    color: white;
+}
+
+.project-description {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.project-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.project-detail {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.tech-tag {
+    background: #f8f9fa;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+}
+
+.project-link {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // 更新活动按钮
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.dataset.filter;
+            
+            // 筛选项目
+            projectCards.forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+</script>
