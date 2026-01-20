@@ -1,0 +1,158 @@
+<!-- ============================================
+index.html - 网站首页
+使用 home.html 布局
+============================================ -->
+
+---
+layout: home                         # 使用首页布局
+title: "Home"                       # 页面标题
+permalink: /                        # 永久链接（根目录）
+hero_image: "/assets/images/background.jpg"  # 英雄区域背景图
+---
+
+<!-- 英雄区域 -->
+<section class="hero">
+  <div class="hero-content">
+    <img src="/assets/images/avatar.jpg" alt="Your Name" class="hero-avatar">
+    <h1 class="hero-title">Your Name</h1>
+    <p class="hero-subtitle">{{ site.about.position }}</p>
+    <p class="hero-subtitle">{{ site.about.department }}, {{ site.about.university }}</p>
+    <div class="hero-social">
+      {% for social in site.social_links %}
+        <a href="{{ social[1] }}" class="social-icon" title="{{ social[0] | capitalize }}">
+          <i class="fab fa-{{ social[0] }}"></i>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- 关于我 -->
+<section class="section" id="about">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>Welcome to my academic homepage! I am a passionate researcher specializing in 
+           <strong>computational materials science</strong> and <strong>machine learning</strong>. 
+           My work focuses on developing novel algorithms for material discovery and characterization.</p>
+        
+        <h3>Research Interests</h3>
+        <ul class="interests-list">
+          {% for interest in site.about.research_interests %}
+            <li><i class="fas fa-microscope"></i> {{ interest }}</li>
+          {% endfor %}
+        </ul>
+        
+        <h3>Education</h3>
+        <div class="education-timeline">
+          {% for edu in site.about.education %}
+            <div class="education-item">
+              <div class="education-degree">{{ edu.degree }}</div>
+              <div class="education-university">{{ edu.university }}</div>
+              <div class="education-year">{{ edu.year }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <!-- 快速链接 -->
+      <div class="quick-links">
+        <div class="quick-link-card">
+          <i class="fas fa-file-alt"></i>
+          <h4>Latest Publication</h4>
+          <p>"Machine Learning for Material Discovery"</p>
+          <a href="/publications.html" class="btn">View All</a>
+        </div>
+        <div class="quick-link-card">
+          <i class="fas fa-chart-line"></i>
+          <h4>Research Projects</h4>
+          <p>Ongoing and completed projects</p>
+          <a href="/projects.html" class="btn">Explore</a>
+        </div>
+        <div class="quick-link-card">
+          <i class="fas fa-newspaper"></i>
+          <h4>Latest News</h4>
+          <p>Recent updates and achievements</p>
+          <a href="/blog.html" class="btn">Read More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最新动态 -->
+<section class="section bg-light" id="news">
+  <div class="container">
+    <h2 class="section-title">Latest News</h2>
+    <div class="news-grid">
+      {% for post in site.posts limit:3 %}
+        <article class="news-card">
+          <div class="news-date">{{ post.date | date: "%b %d, %Y" }}</div>
+          <h3 class="news-title">{{ post.title }}</h3>
+          <p class="news-excerpt">{{ post.excerpt | strip_html | truncate: 150 }}</p>
+          <a href="{{ post.url }}" class="news-link">Read more →</a>
+        </article>
+      {% endfor %}
+    </div>
+    <div class="text-center">
+      <a href="/blog.html" class="btn btn-primary">View All News</a>
+    </div>
+  </div>
+</section>
+
+<!-- 精选出版物 -->
+<section class="section" id="featured-publications">
+  <div class="container">
+    <h2 class="section-title">Featured Publications</h2>
+    <div class="publications-list">
+      {% assign featured_pubs = site.data.publications | where: "featured", true | limit: 3 %}
+      {% for pub in featured_pubs %}
+        <div class="publication-item">
+          <div class="pub-badge">{{ pub.year }}</div>
+          <h3 class="pub-title">{{ pub.title }}</h3>
+          <p class="pub-authors">{{ pub.authors }}</p>
+          <p class="pub-venue"><em>{{ pub.venue }}</em></p>
+          <div class="pub-links">
+            {% if pub.doi %}
+              <a href="https://doi.org/{{ pub.doi }}" class="pub-link">DOI</a>
+            {% endif %}
+            {% if pub.arxiv %}
+              <a href="https://arxiv.org/abs/{{ pub.arxiv }}" class="pub-link">arXiv</a>
+            {% endif %}
+            {% if pub.code %}
+              <a href="{{ pub.code }}" class="pub-link">Code</a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="text-center">
+      <a href="/publications.html" class="btn">View All Publications</a>
+    </div>
+  </div>
+</section>
+
+<!-- 统计信息 -->
+<section class="section bg-dark text-light" id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">{{ site.data.publications | size }}+</div>
+        <div class="stat-label">Publications</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">{% assign total_citations = site.data.publications | map: 'citations' | sum %}{{ total_citations }}+</div>
+        <div class="stat-label">Citations</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">{{ site.data.projects | where: "status", "active" | size }}+</div>
+        <div class="stat-label">Active Projects</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+  </div>
+</section>
