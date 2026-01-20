@@ -1,28 +1,81 @@
+# ============================================
+# 学术个人网站配置文件
+# ============================================
+
 # 网站基本信息
-title: "学术姓名 | Academic Profile"
-email: "your_name@university.edu"
-description: "Ph.D. Candidate in Artificial Intelligence at University Name."
-baseurl: "" # 如果仓库名是 username.github.io 则留空
-url: "https://youngjoyy.github.io"
-
-# 导航栏配置 (供 header.html 调用)
-navigation:
-  - title: "Home"
-    url: /
-  - title: "Publications"
-    url: /publications/
-  - title: "Projects"
-    url: /projects/
-  - title: "News"
-    url: /news/
-
-# 社交链接
-social:
-  github: "username"
-  google_scholar: "link_id"
-  twitter: "handle"
+title: "Your Name | Academic Homepage"  # 网站标题
+name: "Your Name"                        # 你的名字
+email: "your.email@university.edu"       # 邮箱
+description: "Personal academic homepage of Your Name, showcasing research, publications, and projects."
+baseurl: ""                             # 如果部署在子目录，填写目录名
+url: "https://yourusername.github.io"   # 你的GitHub Pages地址
+github_username: "yourusername"         # GitHub用户名
+google_scholar_id: "your_scholar_id"    # Google Scholar ID
+orcid_id: "0000-0000-0000-0000"         # ORCID ID
 
 # 构建设置
-markdown: kramdown
+permalink: pretty                       # 永久链接样式
+timezone: Asia/Shanghai                 # 时区
+future: false                           # 是否显示未来日期的文章
+highlighter: rouge                      # 代码高亮器
+
+# Jekyll插件
+plugins:
+  - jekyll-feed                         # RSS订阅
+  - jekyll-seo-tag                      # SEO优化
+  - jekyll-sitemap                      # 网站地图
+
+# 自定义变量
+navigation:                             # 导航菜单配置
+  - title: "Home"
+    url: "/"
+    icon: "fas fa-home"
+  - title: "Publications"
+    url: "/publications.html"
+    icon: "fas fa-book"
+  - title: "Projects"
+    url: "/projects.html"
+    icon: "fas fa-code-branch"
+  - title: "Blog"
+    url: "/blog.html"
+    icon: "fas fa-blog"
+  - title: "Contact"
+    url: "/contact.html"
+    icon: "fas fa-envelope"
+
+# 社交媒体链接
+social_links:
+  github: "https://github.com/yourusername"
+  twitter: "https://twitter.com/yourusername"
+  linkedin: "https://linkedin.com/in/yourusername"
+  researchgate: "https://researchgate.net/profile/yourusername"
+  google_scholar: "https://scholar.google.com/citations?user=your_scholar_id"
+
+# 个人信息
+about:
+  position: "PhD Candidate / Postdoctoral Researcher"
+  department: "Department of Computer Science"
+  university: "Your University"
+  location: "City, Country"
+  research_interests:
+    - "Machine Learning"
+    - "Computational Materials Science"
+    - "Data Mining"
+    - "Quantum Computing"
+  education:
+    - degree: "PhD in Computer Science"
+      university: "Your University"
+      year: "2019-2024"
+    - degree: "MSc in Computer Science"
+      university: "Another University"
+      year: "2016-2019"
+
+# 分析工具 (可选)
+analytics:
+  google_analytics: "UA-XXXXX-Y"        # Google Analytics ID
+  umami_id: "your-umami-id"            # Umami Analytics ID
+
+# SASS/SCSS设置
 sass:
-  style: compressed
+  sass_dir: _sass
+  style: compressed                     # 压缩CSS输出
