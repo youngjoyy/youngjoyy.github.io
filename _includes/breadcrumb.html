@@ -1,0 +1,38 @@
+<!--
+面包屑导航 - 显示当前页面的位置路径
+-->
+<nav class="breadcrumb" aria-label="breadcrumb">
+    <ol>
+        <li>
+            <a href="{{ '/' | relative_url }}">
+                <i class="fas fa-home"></i> Home
+            </a>
+        </li>
+        
+        {% assign url_parts = page.url | split: '/' %}
+        {% assign current_url = '' %}
+        
+        {% for part in url_parts %}
+            {% if part != '' %}
+                {% assign current_url = current_url | append: '/' | append: part %}
+                
+                {% if forloop.last %}
+                    <!-- 当前页面 -->
+                    <li aria-current="page">
+                        {{ page.title | default: part | replace: '-', ' ' | capitalize }}
+                    </li>
+                {% else %}
+                    <!-- 父级页面 -->
+                    {% assign page_title = part | replace: '-', ' ' | capitalize %}
+                    {% assign page_obj = site.pages | where: "url", current_url | first %}
+                    
+                    <li>
+                        <a href="{{ current_url | relative_url }}">
+                            {{ page_obj.title | default: page_title }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </ol>
+</nav>
