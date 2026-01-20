@@ -1,0 +1,348 @@
+<!-- ============================================
+publications.html - 出版物页面
+支持按年份、类型筛选和搜索
+============================================ -->
+
+---
+layout: default
+title: "Publications"
+permalink: /publications.html
+description: "List of academic publications by Your Name"
+---
+
+<div class="page-header">
+  <div class="container">
+    <h1 class="page-title">Publications</h1>
+    <p class="page-description">A comprehensive list of my academic publications, including journal articles, conference papers, and preprints.</p>
+  </div>
+</div>
+
+<div class="container">
+  <!-- 出版物统计 -->
+  <div class="publications-stats">
+    <div class="stats-card">
+      <h4>Total Publications</h4>
+      <div class="stat-number">{{ site.data.publications | size }}</div>
+    </div>
+    <div class="stats-card">
+      <h4>Total Citations</h4>
+      <div class="stat-number">
+        {% assign total_citations = 0 %}
+        {% for pub in site.data.publications %}
+          {% assign total_citations = total_citations | plus: pub.citations %}
+        {% endfor %}
+        {{ total_citations }}+
+      </div>
+    </div>
+    <div class="stats-card">
+      <h4>h-index</h4>
+      <div class="stat-number">
+        {% assign citations = site.data.publications | map: 'citations' | sort | reverse %}
+        {% assign h_index = 0 %}
+        {% for citation in citations %}
+          {% if citation > forloop.index %}
+            {% assign h_index = forloop.index %}
+          {% endif %}
+        {% endfor %}
+        {{ h_index }}
+      </div>
+    </div>
+  </div>
+
+  <!-- 筛选控件 -->
+  <div class="publications-filter">
+    <div class="filter-group">
+      <label for="year-filter">Filter by Year:</label>
+      <select id="year-filter" class="filter-select">
+        <option value="all">All Years</option>
+        {% assign years = site.data.publications | map: 'year' | uniq | sort | reverse %}
+        {% for year in years %}
+          <option value="{{ year }}">{{ year }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="type-filter">Filter by Type:</label>
+      <select id="type-filter" class="filter-select">
+        <option value="all">All Types</option>
+        <option value="journal">Journal Articles</option>
+        <option value="conference">Conference Papers</option>
+        <option value="preprint">Preprints</option>
+        <option value="book">Book Chapters</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <input type="text" id="search-publications" class="search-input" placeholder="Search publications...">
+    </div>
+  </div>
+
+  <!-- 出版物列表 -->
+  <div class="publications-container">
+    {% assign sorted_pubs = site.data.publications | sort: 'year' | reverse %}
+    {% for pub in sorted_pubs %}
+      <div class="publication-card" 
+           data-year="{{ pub.year }}" 
+           data-type="{{ pub.type }}"
+           data-title="{{ pub.title | downcase }}"
+           data-authors="{{ pub.authors | downcase }}">
+        
+        <div class="pub-header">
+          <span class="pub-year">{{ pub.year }}</span>
+          <span class="pub-type">{{ pub.type | capitalize }}</span>
+          {% if pub.featured %}
+            <span class="pub-featured">Featured</span>
+          {% endif %}
+        </div>
+        
+        <h3 class="pub-title">{{ pub.title }}</h3>
+        
+        <div class="pub-authors">{{ pub.authors }}</div>
+        
+        <div class="pub-venue">
+          <em>{{ pub.venue }}</em>
+          {% if pub.volume %}
+            , Volume {{ pub.volume }}
+          {% endif %}
+          {% if pub.pages %}
+            , pp. {{ pub.pages }}
+          {% endif %}
+        </div>
+        
+        {% if pub.abstract %}
+          <div class="pub-abstract">
+            <p>{{ pub.abstract | truncate: 200 }}</p>
+            <button class="btn-abstract" onclick="toggleAbstract(this)">Show Abstract</button>
+            <div class="abstract-full" style="display: none;">
+              {{ pub.abstract }}
+            </div>
+          </div>
+        {% endif %}
+        
+        <div class="pub-metrics">
+          {% if pub.citations %}
+            <span class="citation-count">
+              <i class="fas fa-quote-right"></i> {{ pub.citations }} citations
+            </span>
+          {% endif %}
+          {% if pub.doi %}
+            <span class="doi-link">
+              <a href="https://doi.org/{{ pub.doi }}" target="_blank">
+                <i class="fas fa-external-link-alt"></i> DOI: {{ pub.doi | truncate: 20 }}
+              </a>
+            </span>
+          {% endif %}
+        </div>
+        
+        <div class="pub-links">
+          {% if pub.pdf %}
+            <a href="{{ pub.pdf }}" class="pub-link" target="_blank">
+              <i class="fas fa-file-pdf"></i> PDF
+            </a>
+          {% endif %}
+          {% if pub.arxiv %}
+            <a href="https://arxiv.org/abs/{{ pub.arxiv }}" class="pub-link" target="_blank">
+              <i class="fas fa-archive"></i> arXiv
+            </a>
+          {% endif %}
+          {% if pub.code %}
+            <a href="{{ pub.code }}" class="pub-link" target="_blank">
+              <i class="fab fa-github"></i> Code
+            </a>
+          {% endif %}
+          {% if pub.data %}
+            <a href="{{ pub.data }}" class="pub-link" target="_blank">
+              <i class="fas fa-database"></i> Data
+            </a>
+          {% endif %}
+          {% if pub.slides %}
+            <a href="{{ pub.slides }}" class="pub-link" target="_blank">
+              <i class="fas fa-presentation"></i> Slides
+            </a>
+          {% endif %}
+          {% if pub.video %}
+            <a href="{{ pub.video }}" class="pub-link" target="_blank">
+              <i class="fas fa-video"></i> Video
+            </a>
+          {% endif %}
+        </div>
+        
+        {% if pub.keywords %}
+          <div class="pub-keywords">
+            {% for keyword in pub.keywords %}
+              <span class="keyword">{{ keyword }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+        
+      </div>
+    {% endfor %}
+  </div>
+  
+  <!-- 分页控件 -->
+  <div class="pagination">
+    <button id="prev-page" class="pagination-btn" disabled>Previous</button>
+    <div id="page-numbers" class="page-numbers"></div>
+    <button id="next-page" class="pagination-btn">Next</button>
+  </div>
+  
+  <!-- 数据导出 -->
+  <div class="export-section">
+    <h3>Export Publications</h3>
+    <div class="export-buttons">
+      <button onclick="exportBibtex()" class="export-btn">
+        <i class="fas fa-file-export"></i> Export as BibTeX
+      </button>
+      <button onclick="exportRIS()" class="export-btn">
+        <i class="fas fa-file-export"></i> Export as RIS
+      </button>
+      <button onclick="exportJSON()" class="export-btn">
+        <i class="fas fa-file-export"></i> Export as JSON
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// 分页功能
+let currentPage = 1;
+const itemsPerPage = 10;
+let filteredPublications = [];
+
+function initPagination() {
+  const cards = document.querySelectorAll('.publication-card');
+  filteredPublications = Array.from(cards);
+  updatePagination();
+}
+
+function updatePagination() {
+  const totalPages = Math.ceil(filteredPublications.length / itemsPerPage);
+  
+  // 更新页面显示
+  document.getElementById('prev-page').disabled = currentPage === 1;
+  document.getElementById('next-page').disabled = currentPage === totalPages;
+  
+  // 更新页码显示
+  const pageNumbers = document.getElementById('page-numbers');
+  pageNumbers.innerHTML = '';
+  
+  for (let i = 1; i <= totalPages; i++) {
+    const pageBtn = document.createElement('button');
+    pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+    pageBtn.textContent = i;
+    pageBtn.onclick = () => goToPage(i);
+    pageNumbers.appendChild(pageBtn);
+  }
+  
+  // 显示当前页的项目
+  showCurrentPage();
+}
+
+function showCurrentPage() {
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  
+  filteredPublications.forEach((card, index) => {
+    if (index >= startIndex && index < endIndex) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+function goToPage(page) {
+  currentPage = page;
+  updatePagination();
+}
+
+// 筛选功能
+document.getElementById('year-filter').addEventListener('change', filterPublications);
+document.getElementById('type-filter').addEventListener('change', filterPublications);
+document.getElementById('search-publications').addEventListener('input', filterPublications);
+
+function filterPublications() {
+  const yearFilter = document.getElementById('year-filter').value;
+  const typeFilter = document.getElementById('type-filter').value;
+  const searchQuery = document.getElementById('search-publications').value.toLowerCase();
+  
+  const cards = document.querySelectorAll('.publication-card');
+  filteredPublications = [];
+  
+  cards.forEach(card => {
+    const year = card.dataset.year;
+    const type = card.dataset.type;
+    const title = card.dataset.title;
+    const authors = card.dataset.authors;
+    
+    let show = true;
+    
+    // 年份筛选
+    if (yearFilter !== 'all' && year !== yearFilter) {
+      show = false;
+    }
+    
+    // 类型筛选
+    if (typeFilter !== 'all' && type !== typeFilter) {
+      show = false;
+    }
+    
+    // 搜索筛选
+    if (searchQuery && !title.includes(searchQuery) && !authors.includes(searchQuery)) {
+      show = false;
+    }
+    
+    if (show) {
+      filteredPublications.push(card);
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  
+  currentPage = 1;
+  updatePagination();
+}
+
+// 导出功能
+function exportBibtex() {
+  const pubs = {{ site.data.publications | jsonify }};
+  let bibtex = '';
+  
+  pubs.forEach(pub => {
+    bibtex += `@article{${pub.id || pub.title.substring(0, 20).toLowerCase().replace(/\s/g, '_')},
+  title = {${pub.title}},
+  author = {${pub.authors}},
+  journal = {${pub.venue}},
+  year = {${pub.year}},
+  doi = {${pub.doi || ''}}
+}\n\n`;
+  });
+  
+  downloadFile(bibtex, 'publications.bib', 'text/plain');
+}
+
+function exportRIS() {
+  // RIS格式导出
+  // 实现类似上面的导出逻辑
+}
+
+function exportJSON() {
+  const pubs = {{ site.data.publications | jsonify }};
+  downloadFile(JSON.stringify(pubs, null, 2), 'publications.json', 'application/json');
+}
+
+function downloadFile(content, filename, contentType) {
+  const blob = new Blob([content], { type: contentType });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// 初始化
+document.addEventListener('DOMContentLoaded', () => {
+  initPagination();
+});
+</script>
