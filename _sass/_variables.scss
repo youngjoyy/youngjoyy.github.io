@@ -1,0 +1,63 @@
+// ============================================
+// 颜色变量
+// ============================================
+
+// 主色调
+$primary-color: #2c3e50;          // 深蓝色
+$secondary-color: #3498db;        // 亮蓝色
+$accent-color: #e74c3c;           // 红色（强调色）
+
+// 文本颜色
+$text-color: #333333;
+$text-light: #666666;
+$text-lighter: #999999;
+
+// 背景颜色
+$bg-color: #ffffff;
+$bg-light: #f8f9fa;
+$bg-dark: #2c3e50;
+
+// 边框颜色
+$border-color: #e0e0e0;
+$border-light: #f0f0f0;
+
+// ============================================
+// 字体变量
+// ============================================
+
+$font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+$font-family-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+$font-size-base: 16px;
+$font-size-sm: 14px;
+$font-size-lg: 18px;
+$font-size-xl: 24px;
+
+$line-height-base: 1.6;
+
+// ============================================
+// 间距变量
+// ============================================
+
+$spacing-xs: 5px;
+$spacing-sm: 10px;
+$spacing-md: 20px;
+$spacing-lg: 30px;
+$spacing-xl: 50px;
+
+// ============================================
+// 断点（响应式设计）
+// ============================================
+
+$breakpoint-xs: 480px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+
+// ============================================
+// 其他变量
+// ============================================
+
+$border-radius: 8px;
+$box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+$transition-speed: 0.3s;
