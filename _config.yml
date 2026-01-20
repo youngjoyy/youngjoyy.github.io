@@ -19,11 +19,14 @@ timezone: Asia/Shanghai                 # 时区
 future: false                           # 是否显示未来日期的文章
 highlighter: rouge                      # 代码高亮器
 
+# ==================== Jekyll核心配置（无需修改） ====================
+markdown: kramdown
 # Jekyll插件
 plugins:
   - jekyll-feed                         # RSS订阅
   - jekyll-seo-tag                      # SEO优化
   - jekyll-sitemap                      # 网站地图
+  - jekyll-paginate             # 博客分页插件（内置）
 
 # 自定义变量
 navigation:                             # 导航菜单配置
