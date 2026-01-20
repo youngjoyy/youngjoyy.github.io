@@ -1,0 +1,328 @@
+// ============================================
+// 主样式文件 - 导入所有SCSS模块
+// ============================================
+
+// 导入变量
+@import 'variables';
+
+// 导入基础样式
+@import 'base';
+
+// 导入布局样式
+@import 'layout';
+
+// 导入组件样式
+@import 'components';
+
+// ============================================
+// 首页特有样式
+// ============================================
+
+.home-layout {
+    .hero {
+        background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 10%) 100%);
+        color: white;
+        padding: $spacing-xl * 2 $spacing-xl;
+        text-align: center;
+        margin-bottom: $spacing-xl;
+        
+        @media (max-width: $breakpoint-sm) {
+            padding: $spacing-xl $spacing-md;
+        }
+        
+        .hero-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto $spacing-lg;
+        }
+        
+        .hero-title {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: $spacing-sm;
+            
+            @media (max-width: $breakpoint-sm) {
+                font-size: 2rem;
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: $spacing-sm;
+        }
+        
+        .hero-social {
+            margin-top: $spacing-lg;
+            
+            .social-icon {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                margin: 0 $spacing-xs;
+                line-height: 40px;
+                color: white;
+                transition: background-color $transition-speed;
+                
+                &:hover {
+                    background-color: $secondary-color;
+                }
+            }
+        }
+    }
+    
+    .section {
+        padding: $spacing-xl 0;
+        
+        &-title {
+            text-align: center;
+            margin-bottom: $spacing-xl;
+            position: relative;
+            
+            &:after {
+                content: '';
+                display: block;
+                width: 60px;
+                height: 3px;
+                background-color: $secondary-color;
+                margin: $spacing-sm auto;
+            }
+        }
+        
+        &.bg-light {
+            background-color: $bg-light;
+        }
+        
+        &.bg-dark {
+            background-color: $primary-color;
+            color: white;
+            
+            .section-title {
+                color: white;
+                
+                &:after {
+                    background-color: $secondary-color;
+                }
+            }
+        }
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 $spacing-lg;
+        
+        @media (max-width: $breakpoint-sm) {
+            padding: 0 $spacing-md;
+        }
+    }
+    
+    // 关于我部分
+    .about-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: $spacing-xl;
+        
+        @media (max-width: $breakpoint-md) {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    // 快速链接卡片
+    .quick-links {
+        .quick-link-card {
+            background-color: white;
+            border-radius: $border-radius;
+            padding: $spacing-lg;
+            margin-bottom: $spacing-lg;
+            box-shadow: $box-shadow;
+            text-align: center;
+            
+            i {
+                font-size: 2rem;
+                color: $secondary-color;
+                margin-bottom: $spacing-md;
+            }
+            
+            h4 {
+                margin-bottom: $spacing-sm;
+            }
+            
+            p {
+                color: $text-light;
+                margin-bottom: $spacing-md;
+            }
+            
+            .btn {
+                display: inline-block;
+            }
+        }
+    }
+    
+    // 教育时间线
+    .education-timeline {
+        .education-item {
+            margin-bottom: $spacing-lg;
+            padding-left: $spacing-lg;
+            position: relative;
+            
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 10px;
+                height: 10px;
+                background-color: $secondary-color;
+                border-radius: 50%;
+            }
+            
+            &:after {
+                content: '';
+                position: absolute;
+                left: 4px;
+                top: 10px;
+                bottom: -$spacing-lg;
+                width: 2px;
+                background-color: $border-color;
+            }
+            
+            &:last-child:after {
+                display: none;
+            }
+            
+            .education-degree {
+                font-weight: 600;
+                margin-bottom: $spacing-xs;
+            }
+            
+            .education-university {
+                color: $text-light;
+                margin-bottom: $spacing-xs;
+            }
+            
+            .education-year {
+                color: $secondary-color;
+                font-size: $font-size-sm;
+                font-weight: 600;
+            }
+        }
+    }
+    
+    // 新闻网格
+    .news-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: $spacing-lg;
+        margin-bottom: $spacing-xl;
+    }
+    
+    .news-card {
+        background-color: white;
+        border-radius: $border-radius;
+        padding: $spacing-lg;
+        box-shadow: $box-shadow;
+        
+        .news-date {
+            color: $secondary-color;
+            font-size: $font-size-sm;
+            font-weight: 600;
+            margin-bottom: $spacing-sm;
+        }
+        
+        .news-title {
+            font-size: 1.2rem;
+            margin-bottom: $spacing-sm;
+        }
+        
+        .news-excerpt {
+            color: $text-light;
+            margin-bottom: $spacing-md;
+        }
+        
+        .news-link {
+            color: $secondary-color;
+            font-weight: 600;
+            
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    
+    // 出版物列表
+    .publications-list {
+        .publication-item {
+            background-color: white;
+            border-radius: $border-radius;
+            padding: $spacing-lg;
+            margin-bottom: $spacing-lg;
+            box-shadow: $box-shadow;
+            
+            .pub-badge {
+                display: inline-block;
+                background-color: $secondary-color;
+                color: white;
+                padding: 3px 10px;
+                border-radius: 20px;
+                font-size: $font-size-sm;
+                margin-bottom: $spacing-sm;
+            }
+            
+            .pub-title {
+                font-size: 1.2rem;
+                margin-bottom: $spacing-sm;
+            }
+            
+            .pub-authors {
+                color: $text-light;
+                margin-bottom: $spacing-xs;
+            }
+            
+            .pub-venue {
+                color: $secondary-color;
+                font-style: italic;
+                margin-bottom: $spacing-md;
+            }
+            
+            .pub-links {
+                a {
+                    display: inline-block;
+                    margin-right: $spacing-md;
+                    color: $text-light;
+                    font-size: $font-size-sm;
+                    
+                    &:hover {
+                        color: $secondary-color;
+                    }
+                }
+            }
+        }
+    }
+    
+    // 统计网格
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: $spacing-lg;
+        text-align: center;
+    }
+    
+    .stat-item {
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: $spacing-xs;
+            color: $secondary-color;
+        }
+        
+        .stat-label {
+            font-size: $font-size-sm;
+            color: rgba(255, 255, 255, 0.8);
+        }
+    }
+}
