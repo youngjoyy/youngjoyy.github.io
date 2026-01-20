@@ -1,0 +1,24 @@
+<!--
+普通页面布局 - 添加面包屑导航和页面标题
+-->
+---
+layout: default
+---
+
+<article class="page">
+    <!-- 面包屑导航 -->
+    {% include breadcrumb.html %}
+    
+    <!-- 页面标题 -->
+    <header class="page-header">
+        <h1 class="page-title">{{ page.title }}</h1>
+        {% if page.description %}
+        <p class="page-description">{{ page.description }}</p>
+        {% endif %}
+    </header>
+    
+    <!-- 页面内容 -->
+    <div class="page-content">
+        {{ content }}
+    </div>
+</article>
