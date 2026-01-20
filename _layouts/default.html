@@ -1,23 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-{% include head.html %}
-<body>
-  {% include header.html %}
+<html lang="zh-CN">
+<head>
+  <!-- 元数据 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
   
-  <div class="main-container">
-    <div class="content-wrapper">
-      {% include sidebar.html %}
-      
-      <main class="page-content">
-        {% if page.url != "/" %}
-          {% include breadcrumb.html %}
-        {% endif %}
-        {{ content }}
-      </main>
-    </div>
-  </div>
+  <!-- SEO优化（插件自动生成） -->
+  {% seo %}
 
+  <!-- 引入编译后的CSS -->
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/main.css">
+
+  <!-- 引入JS脚本（defer：DOM加载完成后执行） -->
+  <script src="{{ site.url }}/assets/js/main.js" defer></script>
+</head>
+<body>
+  <!-- 导入导航栏 -->
+  {% include header.html %}
+
+  <!-- 页面主体内容（子布局填充） -->
+  <main class="container">
+    {{ content }}
+  </main>
+
+  <!-- 导入页脚 -->
   {% include footer.html %}
-  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>
