@@ -1,3 +1,9 @@
+<!--
+默认布局 - 所有页面的基础模板
+包含：头部、侧边栏、主要内容区、页脚
+-->
+
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -14,17 +20,36 @@
 
   <!-- 引入JS脚本（defer：DOM加载完成后执行） -->
   <script src="{{ site.url }}/assets/js/main.js" defer></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
 </head>
 <body>
-  <!-- 导入导航栏 -->
-  {% include header.html %}
-
-  <!-- 页面主体内容（子布局填充） -->
-  <main class="container">
-    {{ content }}
-  </main>
-
-  <!-- 导入页脚 -->
-  {% include footer.html %}
+    <div class="page-wrapper">
+        <!-- 左侧边栏 -->
+        <aside class="sidebar">
+            {% include sidebar.html %}
+        </aside>
+        
+        <!-- 主要内容区 -->
+        <main class="main-content">
+            <!-- 顶部导航 -->
+            <header class="top-nav">
+                {% include header.html %}
+            </header>
+            
+            <!-- 页面内容 -->
+            <div class="content-container">
+                {{ content }}
+            </div>
+            
+            <!-- 页脚 -->
+            <footer class="footer">
+                {% include footer.html %}
+            </footer>
+        </main>
+    </div>
+  <!-- JavaScript -->
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>
